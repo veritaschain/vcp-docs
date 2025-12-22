@@ -33,6 +33,16 @@ Located under: `/spec/`
 - Compliance tiers  
 Located under: `/certified/`
 
+### **5. Standards & Public Discussion Materials**
+- FIX Protocol gap analysis and tag mapping (non-normative)
+- VCP–FIX sidecar integration architecture
+- ISO/TC 68 JWG7 technical input (AI in Financial Services)
+
+These materials are provided **for discussion purposes only** and do not represent
+formal standard proposals, endorsements, or official positions of any standards body.
+
+Located under: `/standards/`
+
 ---
 
 ## 🔍 About VCP
