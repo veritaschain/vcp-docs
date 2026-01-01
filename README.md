@@ -33,7 +33,20 @@ Located under: `/spec/`
 - Compliance tiers  
 Located under: `/certified/`
 
-### **5. Standards & Public Discussion Materials**
+### **5. Standards & Implementation Guides**
+
+#### VCP v1.1 Official Implementation Guide ⭐ NEW
+Comprehensive implementation guidance for VCP v1.1, including:
+- Three-layer integrity architecture
+- External anchoring (REQUIRED for all tiers)
+- Policy Identification
+- Error event standardization
+- Sidecar integration patterns (MT5, FIX, Kafka)
+- Migration from v1.0
+
+Located under: `/standards/vcp/v1.1/`
+
+#### Discussion Materials
 - FIX Protocol gap analysis and tag mapping (non-normative)
 - VCP–FIX sidecar integration architecture
 - ISO/TC 68 JWG7 technical input (AI in Financial Services)
@@ -45,7 +58,7 @@ Located under: `/standards/`
 
 ---
 
-## 🔍 About VCP
+## 🔐 About VCP
 
 VCP provides an immutable, cryptographically verifiable audit trail for algorithmic
 trading systems using:
@@ -58,9 +71,9 @@ trading systems using:
 
 ---
 
-## 🌐 Philosophy
+## 🌍 Philosophy
 
-**Verify, Don’t Trust.**  
+**Verify, Don't Trust.**  
 Every event can be independently verified, without relying on server-side trust.
 
 ---
@@ -71,7 +84,7 @@ All documentation is licensed under **CC BY 4.0** unless otherwise noted.
 
 ---
 
-## 🏛 Maintained By
+## 🛠 Maintained By
 
 **VeritasChain Standards Organization (VSO)**  
 Encoding Trust in the Algorithmic Age  
