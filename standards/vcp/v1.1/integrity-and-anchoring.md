@@ -59,12 +59,24 @@ security = {
 
 All VCP implementations MUST construct Merkle Trees over event batches per RFC 6962.
 
+> **Erratum — 25 October 2026 (informative).** The `root()` example below
+> duplicates the last node when a level has an odd number of nodes. RFC 6962
+> §2.1 does not duplicate nodes: for `n > 1` leaves it splits at the largest
+> power of two smaller than `n`. For sizes that are not a power of two, the
+> example's roots therefore differ from RFC 6962 roots, and `[e0,e1,e2]` and
+> `[e0,e1,e2,e2]` share a root. VAP v1.2 §4.1.4 requires RFC 6962
+> construction. For a corrected RFC 6962 Merkle Tree Hash and audit path, see
+> [VCP Implementation Guide v1.1 §3.3](https://github.com/veritaschain/vcp-sdk-spec/blob/main/VCP_IMPLEMENTATION_GUIDE_v1_1.md#33-layer-2-collection-integrity)
+> in vcp-sdk-spec (Merkle erratum of 2026-10-08). The code is kept as
+> published so that historical roots made with it can be identified; do not
+> use it for new trees, and do not relabel roots it produced as RFC 6962 roots.
+
 ```python
 import hashlib
 from typing import List
 
 class MerkleTree:
-    """RFC 6962 compliant Merkle Tree."""
+    """Merkle tree with RFC 6962 leaf/node prefixes; NOT RFC 6962 for odd sizes (see erratum)."""
     
     LEAF_PREFIX = b'\x00'   # Domain separation for leaves
     NODE_PREFIX = b'\x01'   # Domain separation for internal nodes
@@ -86,7 +98,7 @@ class MerkleTree:
         
         nodes = self.leaves.copy()
         while len(nodes) > 1:
-            # Duplicate last node if odd count
+            # Duplicate last node if odd count (not RFC 6962; see erratum above)
             if len(nodes) % 2 == 1:
                 nodes.append(nodes[-1])
             
