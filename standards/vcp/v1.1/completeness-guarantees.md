@@ -49,8 +49,9 @@ Merkle Root anchored: abc123...
                          ↓
 Auditor can check: "Is E3 in the tree with root abc123?"
                          ↓
-If E3 was in the anchored batch but is withheld: the disclosed events do not
-match the anchored event count / first-last IDs, or no proof can be produced
+If E3 was in the anchored batch but is withheld: the disclosed batch does not
+reproduce the anchored root (and, where batch metadata is authenticated, does
+not match its count / first-last IDs), or no proof can be produced
 ```
 
 This detects omission **after anchoring**. If E3 was never included in the
@@ -127,7 +128,7 @@ def verify_completeness(event, audit_path, anchored_root) -> bool:
 2. Producer cannot provide valid proof (E3 not in tree)
 3. Or: Auditor compares event count with batch metadata
 
-**Mitigation:** External anchor commits to the anchored batch (count and first/last event IDs).
+**Mitigation:** The external anchor commits to the batch's Merkle root; a disclosed batch that omits an anchored event does not reproduce that root. Count and first/last event IDs are covered only where they are themselves signed or anchored (not by a root-only signature; VCP v1.2 integrity review, observation P6).
 
 ### Scenario 2: Late Addition Attack
 
