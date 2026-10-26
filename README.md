@@ -1,42 +1,38 @@
 # VeritasChain Protocol – Documentation Hub
 
-Welcome to the official documentation hub for the **VeritasChain Protocol (VCP)** —  
-a global cryptographic audit standard for algorithmic and AI-driven trading.
+Welcome to the documentation hub for the **VeritasChain Protocol (VCP)** —  
+an open VSO specification for tamper-evident, cryptographically verifiable audit
+trails in algorithmic and AI-driven trading. VCP has not been adopted by any
+established standards body; its IETF profile is an individual Internet-Draft.
 
-This repository hosts all documentation maintained by the  
-**VeritasChain Standards Organization (VSO)**, including:
+This repository hosts implementation guides and discussion materials maintained
+by the **VeritasChain Standards Organization (VSO)**. Other VCP documentation
+lives in its own repositories:
 
-## 📘 Included Documentation
+## 📘 Where to find VCP documentation
 
-### **1. VCP Explorer (GUI) Documentation**
-- User Guide
-- Full documentation set
-- Release notes
-- Interface specifications  
-Located under: `/explorer/`
+### **1. VCP Explorer (GUI)**
+- Repository: [veritaschain/vcp-explorer-gui](https://github.com/veritaschain/vcp-explorer-gui)
 
-### **2. VCP API Documentation**
-- API Reference (Explorer API v1.1)
-- Developer Guides
-- Example integrations  
-Located under: `/api/`
+### **2. VCP Explorer API**
+- API reference, developer guide and OpenAPI description (Explorer API package v1.1.0)
+- Repository: [veritaschain/vcp-explorer-api](https://github.com/veritaschain/vcp-explorer-api)
+- Its README states that the server currently returns mock data, not verified evidence
 
 ### **3. VCP Specification**
-- VCP v1.0 (EN / JA / ZH)
-- Conformance requirements
-- Implementation notes  
-Located under: `/spec/`
+- Current release: VCP v1.2 (EN normative; JA / ZH translations); v1.0 and v1.1 are kept for reference
+- Repository: [veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec)
 
 ### **4. VC-Certified Program**
-- Certification requirements
-- Technical test suites
-- Compliance tiers  
-Located under: `/certified/`
+- Scheme information: https://veritaschain.org/certified/
+- The scheme requires Conformity Assessment Bodies (CABs) independent of the
+  scheme owner; the only registered CAB, VeritasChain Co., Ltd., operates VSO and
+  is not independent of it. Conformance is not regulatory compliance.
 
-### **5. Standards & Implementation Guides**
+### **5. Standards & Implementation Guides (this repository)**
 
-#### VCP v1.1 Official Implementation Guide ⭐ NEW
-Comprehensive implementation guidance for VCP v1.1, including:
+#### VCP v1.1 Implementation Guide (informative; superseded by v1.2)
+Implementation guidance for VCP v1.1, including:
 - Three-layer integrity architecture
 - External anchoring (REQUIRED for all tiers)
 - Policy Identification
@@ -60,8 +56,8 @@ Located under: `/standards/`
 
 ## 🔐 About VCP
 
-VCP provides an immutable, cryptographically verifiable audit trail for algorithmic
-trading systems using:
+VCP provides a tamper-evident, cryptographically verifiable audit trail for
+algorithmic trading systems using:
 
 - UUIDv7 time-sortable identifiers  
 - RFC 8785 canonical JSON  

@@ -1,7 +1,7 @@
 # VCP v1.1 Official Implementation Guide
 
-**Document ID:** VSO-IMPL-001  
-**Status:** Production Ready  
+**Document ID:** VSO-IMPL-001 (the same ID is used by the VCP Implementation Guide v1.1 in [vcp-sdk-spec](https://github.com/veritaschain/vcp-sdk-spec/blob/main/VCP_IMPLEMENTATION_GUIDE_v1_1.md); the two are separate documents)  
+**Status:** Informative implementation guide for VCP v1.1 (published, untagged; superseded by v1.2)  
 **Version:** 1.1.0  
 **Date:** 2025-12-30  
 **Maintainer:** VeritasChain Standards Organization (VSO)  

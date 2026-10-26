@@ -3,11 +3,24 @@
 **Document ID:** VSO-IMPL-001-COMP  
 **Parent:** [VCP v1.1 Implementation Guide](./README.md)
 
+> **Claim-level notice — 25 October 2026 (informative).** This page describes
+> what Merkle batching and external anchoring make *detectable*; it does not
+> describe a guarantee. Under VAP v1.2 INT-008 (Completeness Invariant),
+> omission of events after anchoring and split-view presentation are
+> detectable, at batch granularity, by a verifier holding the anchor and the
+> AnchorRecord bindings (event count, first/last event identifiers, policy
+> identifier). An event that was never included in an anchored batch is not
+> revealed by these mechanisms, and a Merkle inclusion proof for one event
+> does not by itself show that a batch is complete. Conformance is not
+> regulatory compliance (VAP v1.2 §1.6). The title and headings are kept for
+> link stability; the overclaiming sentences below were narrowed on this date.
+> The current specification is [VCP v1.2](https://github.com/veritaschain/vcp-spec/tree/main/spec/v1.2).
+
 ---
 
 ## Overview
 
-VCP v1.1 extends tamper-evidence to **completeness guarantees**, enabling third parties to cryptographically verify not only that events were not altered, but that **no required events were omitted**.
+VCP v1.1 extends tamper-evidence to **omission detection**: third parties can cryptographically check not only that anchored events were not altered, but that **no events within an anchored batch's declared scope were omitted after anchoring** (at batch granularity; an event never included in an anchored batch is not revealed).
 
 This addresses:
 - **Omission attacks:** Selectively hiding unfavorable events
@@ -34,10 +47,15 @@ Producer logs:  [E1] [E2] [E3] [E4] [E5]
                          ↓
 Merkle Root anchored: abc123...
                          ↓
-Auditor can verify: "Is E3 in the tree with root abc123?"
+Auditor can check: "Is E3 in the tree with root abc123?"
                          ↓
-If E3 omitted: Merkle proof fails
+If E3 was in the anchored batch but is withheld: the disclosed batch does not
+reproduce the anchored root (and, where batch metadata is authenticated, does
+not match its count / first-last IDs), or no proof can be produced
 ```
+
+This detects omission **after anchoring**. If E3 was never included in the
+anchored batch, the anchor does not reveal it.
 
 ---
 
@@ -110,7 +128,7 @@ def verify_completeness(event, audit_path, anchored_root) -> bool:
 2. Producer cannot provide valid proof (E3 not in tree)
 3. Or: Auditor compares event count with batch metadata
 
-**Mitigation:** External anchor commits to complete batch.
+**Mitigation:** The external anchor commits to the batch's Merkle root; a disclosed batch that omits an anchored event does not reproduce that root. Count and first/last event IDs are covered only where they are themselves signed or anchored (not by a root-only signature; VCP v1.2 integrity review, observation P6).
 
 ### Scenario 2: Late Addition Attack
 
@@ -253,13 +271,13 @@ def verify_consistency(old_root: str, new_root: str, proof: List[str]) -> bool:
 
 > "Investment firms shall ensure that records... are protected from unauthorized access... and maintained in a way that prevents any manipulation or alteration"
 
-**VCP Compliance:** Merkle proofs + external anchoring provide cryptographic evidence of record completeness.
+**Relevant VCP mechanism:** Merkle proofs + external anchoring provide cryptographic evidence relevant to record integrity and to post-anchor omission at batch granularity. This is not a determination of compliance with RTS 25.
 
 ### EU AI Act Article 12
 
 > "High-risk AI systems shall be designed... to ensure traceability of results... with sufficient information to ensure that the outputs can be traced back..."
 
-**VCP Compliance:** Completeness guarantees ensure no decision records are omitted from audit trails.
+**Relevant VCP mechanism:** Omission detection makes it detectable when anchored decision records are later left out of an audit trail; it does not show that every decision was recorded. This is not a determination of compliance with Article 12.
 
 ---
 
