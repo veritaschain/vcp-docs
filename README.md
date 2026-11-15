@@ -1,4 +1,4 @@
-# VeritasChain Protocol – Documentation Hub
+# VeritasChain Protocol (VCP) – Documentation Hub
 
 Welcome to the documentation hub for the **VeritasChain Protocol (VCP)** —  
 an open VSO specification for tamper-evident, cryptographically verifiable audit
@@ -13,23 +13,38 @@ lives in its own repositories:
 
 ### **1. VCP Explorer (GUI)**
 - Repository: [veritaschain/vcp-explorer-gui](https://github.com/veritaschain/vcp-explorer-gui)
+- The legacy dashboard uses mock data by default. The separate
+  [SDK Evidence Demo](https://github.com/veritaschain/vcp-explorer-gui/blob/main/docs/EVIDENCE_DEMO_INTEGRATION.md)
+  displays bounded SDK results for synthetic evidence through a configured API.
 
 ### **2. VCP Explorer API**
 - API reference, developer guide and OpenAPI description (Explorer API package v1.1.0)
 - Repository: [veritaschain/vcp-explorer-api](https://github.com/veritaschain/vcp-explorer-api)
-- Its README states that the server currently returns mock data, not verified evidence
+- Default event, system and entity routes return mock data, not verified evidence.
+- The optional [SDK evidence routes](https://github.com/veritaschain/vcp-explorer-api/blob/main/docs/EVIDENCE_DEMO.md)
+  run local checks over synthetic fixtures. The intact case remains
+  `INDETERMINATE` overall because no external anchor is verified.
 
 ### **3. VCP Specification**
 - Current release: VCP v1.2 (EN normative; JA / ZH translations); v1.0 and v1.1 are kept for reference
 - Repository: [veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec)
 
-### **4. VC-Certified Program**
+### **4. VCP SDK (offline core)**
+- Repository: [veritaschain/vcp-sdk](https://github.com/veritaschain/vcp-sdk)
+- First-party Python, TypeScript and MQL5 source for VCP v1.2; unreleased
+  development source with package metadata `0.1.0`.
+- Follow the repository's [source installation instructions](https://github.com/veritaschain/vcp-sdk#install)
+  and record the full source commit. Its
+  [implementation interpretations](https://github.com/veritaschain/vcp-sdk/blob/main/INTERPRETATIONS.md)
+  and verification limits do not establish protocol conformance.
+
+### **5. VC-Certified Program**
 - Scheme information: https://veritaschain.org/certified/
 - The scheme requires Conformity Assessment Bodies (CABs) independent of the
   scheme owner; the only registered CAB, VeritasChain Co., Ltd., operates VSO and
   is not independent of it. Conformance is not regulatory compliance.
 
-### **5. Standards & Implementation Guides (this repository)**
+### **6. Standards & Implementation Guides (this repository)**
 
 #### VCP v1.1 Implementation Guide (informative; superseded by v1.2)
 Implementation guidance for VCP v1.1, including:
@@ -70,7 +85,10 @@ algorithmic trading systems using:
 ## 🌍 Philosophy
 
 **Verify, Don't Trust.**  
-Every event can be independently verified, without relying on server-side trust.
+Independent verification requires the relevant evidence and an explicit trust
+policy. Use each implementation's documented verification scope: unavailable
+keys or external proofs can leave checks unresolved, and a local match does not
+establish full protocol conformance.
 
 ---
 
