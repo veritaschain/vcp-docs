@@ -269,6 +269,8 @@ def verify_consistency(old_root: str, new_root: str, proof: List[str]) -> bool:
 
 ### MiFID II RTS 25
 
+> **Note — 21 November 2026 (informative).** RTS 25 (Commission Delegated Regulation (EU) 2017/574) set the accuracy of business clocks only: reference time, level of accuracy and maximum divergence from UTC. It was repealed with effect from 2 March 2026; business-clock synchronisation is now set by [Commission Delegated Regulation (EU) 2025/1155](https://eur-lex.europa.eu/eli/reg_del/2025/1155/oj), Articles 11 to 16. The passage quoted below has not been located in that regulation, whose articles concern clock accuracy; its source is unconfirmed and it should not be cited as RTS 25. The section is kept as published for the v1.1 record.
+
 > "Investment firms shall ensure that records... are protected from unauthorized access... and maintained in a way that prevents any manipulation or alteration"
 
 **Relevant VCP mechanism:** Merkle proofs + external anchoring provide cryptographic evidence relevant to record integrity and to post-anchor omission at batch granularity. This is not a determination of compliance with RTS 25.
